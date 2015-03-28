@@ -20,7 +20,7 @@ tell application "Google Chrome"
 		end repeat
 		
 		
-		--Chrome has to spend some time to execute init javascript,or the javascript statements in the below execute commond won't work.
+		--Chrome has to spend some time to execute init javascript,otherwise the javascript statements in the below execute commond won't work.
 		--How long you should delay depends on the performance of your mac.
 		delay 1
 		

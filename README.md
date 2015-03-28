@@ -4,6 +4,8 @@ applescript tools suite for web developer
 System requirements:
 
   OS X 10.10.2
+  
+  Google Chrome for OSX 41.0.2272.104 (64-bit)
 
 Usage:
 

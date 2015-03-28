@@ -1,7 +1,8 @@
 #!/usr/bin/osascript
 
---this script is to resolve the problem that Chrome can't use the correct hosts after modifying hosts file  because of  Chrome using socket pools.
+--This script is to resolve the problem that Chrome can't use the correct hosts after modifying hosts file  because of  Chrome using socket pools.
 --This script just simulates the click event on the button of "Flush socket pool"  on chrome://net-internals/#sockets page.
+--created by Boreas320 on 2015-3-28
 tell application "Google Chrome"
 	tell front window
 		

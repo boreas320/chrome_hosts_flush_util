@@ -9,9 +9,7 @@ System requirements:
 
 Usage:
 
-  1.flush_chrome_sockets.applescript is to resolve the problem that
-    Chrome can't use the correct hosts after modifying hosts file  
-    because of  Chrome using socket pools.
+  1.flush_chrome_sockets.applescript is to resolve the problem that Chrome can't use the correct hosts after modifying hosts file because of  Chrome using socket pools.
     
     chmod 755 flush_chrome_sockets.applescript
 

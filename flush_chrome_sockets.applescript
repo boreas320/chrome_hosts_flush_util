@@ -1,34 +1,39 @@
 #!/usr/bin/osascript
---此脚本是为了处理每次切换hosts时Chrome总不能及时刷新正确的hosts的问题
+
+--this script is to resolve the problem that Chrome can't use the correct hosts after modifying hosts file  because of  Chrome use socket pools.
+--This script just simulates the click event on the button of "Flush socket pool"  on chrome://net-internals/#sockets page.
 tell application "Google Chrome"
 	tell front window
 		
-		--记录初始tab及其索引位置
+		--record current active tab and its index.
 		set origTab to active tab
 		set origTabIndex to active tab index
 		
-		--打开Chrome刷新sockets的页面
+		--open Chrome sockets page.
 		set theTab to make new tab with properties {URL:"chrome://net-internals/#sockets"}
 		
-		--等待页面载入完毕,此处应该只是html文档载入完毕
+		--waiting for loading html document
 		set isLoadDone to not loading of theTab
 		repeat until isLoadDone
 			set isLoadDone to not loading of theTab
 		end repeat
 		
-		--需要为页面中的初始化javascript留出一段时间,此时间可以根据机器载入初始化javascript的时间进行适当的调整
+		
+		--Chrome has to spend some time to execute init javascript,or the javascript statements in the below execute commond won't work.
+		--How long you should delay depends on the performance of your mac.
 		delay 1
 		
-		--执行刷新sockets连接的操作
+		--flush Chrome sockets
+		--you can find below javascript statements in Chrome's net-internal index.js on line 9860 and 9861
 		execute theTab javascript "g_browser.sendFlushSocketPools();g_browser.checkForUpdatedInfo(false);"
 		
-		--关闭Chrome刷新sockets的页面
+		--close Chrome sockets page
 		close theTab
 		
-		--跳回原来的工作tab页
+		--reactive the previous tab
 		set active tab index to origTabIndex
 		
-		--重新载入工作tab页
+		--reload the previous tab
 		reload origTab
 		
 	end tell

@@ -1,5 +1,5 @@
-# applescript_tools_suite
-applescript tools suite for web developer
+# chrome_hosts_flush_util
+applescript tool for web developer
 
 System requirements:
 
